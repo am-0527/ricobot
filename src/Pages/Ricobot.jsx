@@ -15,6 +15,7 @@ import thumb5 from "../assets/thumbnails/5-thumbnail.png";
 import thumb6 from "../assets/thumbnails/6-thumbnail.png";
 
 import fore1 from "../assets/foregrounds/1-foreground-cutout.png";
+import { RicobotText } from "../enums/RicobotText.enum";
 
 const backgroundImages = [bg1, bg2, bg3, bg4, bg5, bg6];
 const thumbnails = [thumb1, thumb2, thumb3, thumb4, thumb5, thumb6];
@@ -24,41 +25,38 @@ export const Ricobot = () => {
   const [ImageNum, SetImageNum] = useState(0);
   return (
     <MAIN>
-      <DIV className="home" backgroundImage={backgroundImages[ImageNum]}>
-        {foregrounds[ImageNum] && (
-          <div className="foreground">
-            <img src={foregrounds[ImageNum]} alt="" />
-          </div>
-        )}
-      </DIV>
+    <DIV className="home" backgroundImage={backgroundImages[ImageNum]}>
+      {foregrounds[ImageNum] && (
+        <div className="foreground">
+          <img src={foregrounds[ImageNum]} alt="" />
+        </div>
+      )}
+    </DIV>
 
-      <div>
-        <div className="content">
-          <h1 className="more_from">MORE FROM RICO THE DOG</h1>
-          <button className="ricoback">RICO IS BACK!</button>
-          <h1 className="title">RICOBOT</h1>
-          <p>
-            Charge into a brand-new supersized adventure with RICO across 50
-            exciting and diverse worlds, available now on PS5!
-          </p>
-          <button className="learn">Learn More</button>
-          <div className="backgrounds">
-            {thumbnails.length > 0 &&
-              thumbnails.map((img, i) => {
-                return (
-                  <div
-                    key={i}
-                    className={`thumbnail ${ImageNum === i ? "active" : ""}`}
-                    onClick={() => SetImageNum(i)}
-                  >
-                    <img src={img} alt="" />
-                  </div>
-                );
-              })}
-          </div>
+    <div>
+      <div className="content">
+        <h1 className="more_from">{RicobotText.MORE_FROM}</h1>
+        <button className="ricoback">{RicobotText.RICO_BACK}</button>
+        <h1 className="title">{RicobotText.TITLE}</h1>
+        <p>{RicobotText.DESCRIPTION}</p>
+        <button className="learn">{RicobotText.LEARN_MORE}</button>
+        <div className="backgrounds">
+          {thumbnails.length > 0 &&
+            thumbnails.map((img, i) => {
+              return (
+                <div
+                  key={i}
+                  className={`thumbnail ${ImageNum === i ? "active" : ""}`}
+                  onClick={() => SetImageNum(i)}
+                >
+                  <img src={img} alt="" />
+                </div>
+              );
+            })}
         </div>
       </div>
-    </MAIN>
+    </div>
+  </MAIN>
   );
 };
 

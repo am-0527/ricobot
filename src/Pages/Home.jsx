@@ -17,6 +17,7 @@ import fore1 from "../assets/foregrounds/1-foreground-cutout.png";
 import { MainLayout } from "./components/MainLayout";
 import { BackgroundDisplay } from "./components/BackgroundDisplay";
 import { ThumbnailList } from "./components/ThumbnailList";
+import { HomeText } from "../enums/HomeText.enum";
 
 const backgrounds = [bg1, bg2, bg3, bg4, bg5, bg6];
 const thumbnails = [thumb1, thumb2, thumb3, thumb4, thumb5, thumb6];
@@ -27,26 +28,23 @@ export const Home = () => {
 
   return (
     <MainLayout>
-      <BackgroundDisplay
-        background={backgrounds[currentImage]}
-        foreground={foregrounds[currentImage]}
+    <BackgroundDisplay
+      background={backgrounds[currentImage]}
+      foreground={foregrounds[currentImage]}
+    />
+    <div className="content">
+      <h1 className="more_from">{HomeText.MORE_FROM}</h1>
+      <button className="ricoback">{HomeText.RICO_BACK}</button>
+      <h1 className="title">{HomeText.TITLE}</h1>
+      <p>{HomeText.DESCRIPTION}</p>
+      <button className="learn">{HomeText.LEARN_MORE}</button>
+      <ThumbnailList
+        thumbnails={thumbnails}
+        activeIndex={currentImage}
+        onThumbnailClick={setCurrentImage}
       />
-      <div className="content">
-        <h1 className="more_from">MORE FROM RICO THE DOG</h1>
-        <button className="ricoback">RICO IS BACK!</button>
-        <h1 className="title">RICOBOT</h1>
-        <p>
-          Charge into a brand-new supersized adventure with RICO across 50
-          exciting and diverse worlds, available now on PS5!
-        </p>
-        <button className="learn">Learn More</button>
-        <ThumbnailList
-          thumbnails={thumbnails}
-          activeIndex={currentImage}
-          onThumbnailClick={setCurrentImage}
-        />
-      </div>
-    </MainLayout>
+    </div>
+  </MainLayout>
   );
 };
 
